@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="question">
+        <div class="score">
+            <p>Best: {{bestScore}} Score: {{ score }} </p>
+            <div>
+                <button routerLink="/">Home</button>
+            </div>
+        </div>
+        <h1 [innerHTML]="question.question"></h1>
+    </div>
+    <div class="answers">
+        <button class="answer-button true" (click)="checkAnswer('True')">TRUE</button>
+        <button class="answer-button false" (click)="checkAnswer('False')">FALSE</button>
+    </div>
+</div>
