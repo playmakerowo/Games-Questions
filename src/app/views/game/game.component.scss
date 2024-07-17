@@ -4,6 +4,7 @@
     justify-content: space-between;
     text-align: center;
     position: relative;
+    height: 100vh; /* Ensure container takes full viewport height */
 }
 
 .score {
@@ -12,66 +13,57 @@
     align-items: center;
     width: 100%;
     box-sizing: border-box;
-    button {
-        transition-duration: 0.4s;
-        background: none;
-        height: 30px;
-        width: 70px;
-        background-color: #0489aa;
-        color: white;
-        border-radius: 10px;
-        border: none;
-    }
-    
-    button:hover {
-        cursor: pointer;
-        background-color: #022e52;
-        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-    }
+    padding: 10px;
 }
 
+.score button {
+    transition-duration: 0.4s;
+    background: none;
+    height: 30px;
+    width: 70px;
+    background-color: #0489aa;
+    color: white;
+    border-radius: 10px;
+    border: none;
+}
+
+.score button:hover {
+    cursor: pointer;
+    background-color: #022e52;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
 
 .question {
-    padding: 0 15px;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column; /* Ensure column layout */
-    justify-content: center;
     background-color: #1c1c1c;
-    align-items: center;
-    position: relative;
-    z-index: 2;
-    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
 
 .answers {
-    flex-grow: 1;
-    position: absolute;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    z-index: 1;
+    flex-grow: 1; /* Allow answers to take remaining space */
 }
 
 .answer-button {
-    height: 100vh;
+    height: 100%; /* Use 100% of the available height */
     width: 50vw;
     cursor: pointer;
     border: none;
-    font-size: xx-large;
+    font-size: x-large;
     color: white;
     transition: width 0.6s ease, background-color 0.3s, box-shadow 0.3s;
+    touch-action: manipulation;
 }
 
-.answer-button:hover {
+.answer-button:hover, .answer-button:active, .answer-button:focus {
     cursor: pointer;
-    width: 60vw;
+    width: 53vw;
     box-shadow: 12px 16px rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
     transition: width 0.6s ease, background-color 0.3s, box-shadow 0.3s;
 }
 
-.answers:hover .answer-button:not(:hover) {
-    width: 40vw;
+.answers:hover .answer-button:not(:hover), .answers:active .answer-button:not(:active) {
+    width: 47vw;
     transition: width 0.6s ease, background-color 0.3s, box-shadow 0.3s;
 }
 
