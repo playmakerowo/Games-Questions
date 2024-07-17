@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../service/api.service';
 import { QuizQuestion } from '../../models/question.model';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { FormsModule } from '@angular/forms'; 
+import { FormsModule } from '@angular/forms';
+import { timeout } from 'rxjs';
 
 @Component({
   selector: 'app-game',
@@ -35,6 +36,9 @@ export class GameComponent implements OnInit {
       },
       (error) => {
         console.error('Error loading questions:', error);
+        setTimeout(() => {
+          this.loadQuestions(); // Reintento de carga de preguntas después de 5 segundos
+        }, 5000);
       }
     );
   }
