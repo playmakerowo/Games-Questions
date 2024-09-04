@@ -5,6 +5,6 @@ import { GameComponent } from './views/game/game.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
-    { path: 'game', component: GameComponent },
+    { path: 'game/:category', component: GameComponent },
     { path: '**', component: HomeComponent }
 ];

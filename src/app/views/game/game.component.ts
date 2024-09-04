@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../service/api.service';
 import { QuizQuestion } from '../../models/question.model';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterOutlet, ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { timeout } from 'rxjs';
-
 @Component({
   selector: 'app-game',
   standalone: true,
@@ -18,7 +16,7 @@ export class GameComponent implements OnInit {
   score = 0;
   bestScore = 0;
 
-  constructor(private _api: ApiService) { }
+  constructor(private _api: ApiService, private _route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.loadScoreFromLocalStorage();
@@ -26,13 +24,14 @@ export class GameComponent implements OnInit {
   }
 
   loadQuestions(): void {
-    this._api.get().subscribe(
+    const category = parseInt(this._route.snapshot.paramMap.get('category') ?? "");
+    
+    this._api.get(category).subscribe(
       (result) => {
         if (result.response_code === 0 && result.results.length > 0) {
           this.quizQuestions = result.results;
           this.question = this.quizQuestions[0];
         }
-        console.log(result);
       },
       (error) => {
         console.error('Error loading questions:', error);

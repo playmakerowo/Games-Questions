@@ -1,12 +1,18 @@
 <div class="title">
-    <h1 class="title-text">Games Questions</h1>
+    <h1 class="title-text">Questions</h1>
 </div>
 <div class="start-menu">
     <div class="score-content">
         <p class="score">Score: {{score}}</p>
         <p class="bestScore">Best Score: {{bestScore}}</p>
     </div>
-    <button routerLink="/game">Start</button>
+    <select name="categorySelect" id="categorySelect" [(ngModel)]="category">
+        <option value=0>Random</option>
+        <option value=12>Music</option>
+        <option value=11>Films</option>
+        <option value=15>Games</option>
+    </select>
+    <button routerLink="/game/{{category}}">Start</button>
 </div>
 <div class="sub-title">
     <h2 class="sub-tittle-text">Desing by Jorge Villagra</h2>
